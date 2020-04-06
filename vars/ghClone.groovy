@@ -2,6 +2,7 @@
 
 def call() {
   git "https://github.com/${env.REPO}.git"
-  echo 'GIT COMMIT: $GIT_COMMIT'
+  echo "GIT COMMIT ENV: ${env.GIT_COMMIT}"
+  echo "GIT COMMIT LOC: ${GIT_COMMIT}"
   stash name: 'scm', includes: '*'
 }
