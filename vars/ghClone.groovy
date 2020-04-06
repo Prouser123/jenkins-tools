@@ -2,6 +2,6 @@
 
 def call() {
   git "https://github.com/${env.REPO}.git"
-  echo "GIT COMMIT HELPER: ${gitCommit()}"
+  echo "gitCommit() | ${gitCommit()}"
   stash name: 'scm', includes: '*'
 }
