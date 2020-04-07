@@ -2,7 +2,7 @@
 
 def call(String message, String state, String context="ci") {
 
-	String origin = sh(returnStdout: true, script: "git config --get remote.origin.url")
+	String origin = sh(returnStdout: true, script: "git config --get remote.origin.url").replaceAll('\r', '').replaceAll('\n', '')
 	String[] originArr = origin.split("/")
 	String repo = (originArr[-2] + "/" + originArr[-1]).replace(".git", "")
 	
