@@ -2,9 +2,9 @@
 
 def call(String message, String state, String context="ci") {
 	
-​	String origin = "https://github.com/owner/repo.git"
-	String[] originArr = origin.split("/")
-	String repo = ((originArr[-2]  + "/" + originArr[-1]).replace(".git", ""))
+​	def origin = sh(returnStdout: true, script: "git config --get remote.origin.url")
+	def originArr = origin.split("/")
+	def repo = ((originArr[-2]  + "/" + originArr[-1]).replace(".git", ""))
 	
 	withCredentials([string(credentialsId: 'github-ci', variable: 'TOKEN')]) {
 		sh """
