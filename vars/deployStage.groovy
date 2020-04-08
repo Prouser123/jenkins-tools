@@ -7,6 +7,7 @@
 def call(String deployServer='jcx.xray', String branch='master') {
 
   if (gitBranch() == branch) {
+    echo '[deployStage] Branch correct.'
   
     node(deployServer) {
 	
@@ -21,5 +22,7 @@ def call(String deployServer='jcx.xray', String branch='master') {
 		sh "curl --show-error --fail --unix-socket /var/run/jcx-deploy/jcxdeploy.sock http://invalid.invalid/recreate?safejobname=${safeJobName()}"
 	  }
 	}
+  } else {
+    echo '[deployStage] Branch incorrect.'
   }
 }
