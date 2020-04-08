@@ -15,7 +15,7 @@ def call(Boolean commitStatus=false, String deployServer='jcx.xray', String bran
 		unstash 'scm'
 		
 		// Build the docker container
-		sh "docker build . -t jcxdeploy/${safeJobName()}:latest --build-arg ${BUILD_ID}"
+		sh "docker build . -t jcxldn/deploy/${safeJobName()}:latest --build-arg BUILD_ID"
 		
 		// Remove any images created in this build that have a tag of 'builder'
 		sh "docker image prune --filter label=stage=builder --filter label=build=${BUILD_ID}"
