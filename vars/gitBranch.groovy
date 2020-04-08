@@ -11,6 +11,6 @@ def call() {
   } else {
     // command returned HEAD, so we must be using a multi-branch pipeline, falling back to $GIT_BRANCH instead.
     echo '[gitBranch] Found using ENV.'
-	return GIT_BRANCH
+	return env.GIT_BRANCH
   }
 }
