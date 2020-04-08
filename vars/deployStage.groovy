@@ -18,7 +18,7 @@ def call(Boolean commitStatus=false, String deployServer='jcx.xray', String bran
 		sh "docker build . -t jcxldn/deploy/${safeJobName()}:latest --build-arg BUILD_ID"
 		
 		// Remove any images created in this build that have a tag of 'builder'
-		sh "docker image prune --filter label=stage=builder --filter label=build=${BUILD_ID}"
+		sh "docker image prune --filter label=stage=builder --filter label=build=${BUILD_ID} -f"
 		
 		// Deploy it (this will fail - exit code 22 - if the endpoint returns a failure
 		sh "curl --show-error --fail --unix-socket /var/run/jcx-deploy/jcxdeploy.sock http://invalid.invalid/recreate?safejobname=${safeJobName()}"
