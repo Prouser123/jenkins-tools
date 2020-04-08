@@ -11,6 +11,8 @@ def call(String image, Closure body) {
   image.pull()
   
   // Use the image with the Closure body
-  image.inside(body)
+  image.inside {
+    body()
+  }
   
 }
