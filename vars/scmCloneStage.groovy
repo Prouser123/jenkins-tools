@@ -3,7 +3,7 @@
 // Scripted Pipelines only.
 
 def call() {
-  docker.image('jcxldn/jenkins-containers:base').inside {
+  useDockerImage('jcxldn/jenkins-containers:base') {
         stage('Clone') {
 		
 			def scmVars = checkout scm
