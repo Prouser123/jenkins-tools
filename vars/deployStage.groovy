@@ -23,6 +23,6 @@ def call(String deployServer='jcx.xray', String branch='master') {
 	  }
 	}
   } else {
-    echo '[deployStage] Branch incorrect.'
+    echo "[deployStage] Branch incorrect, got '${gitBranch()}', expecting '$branch'."
   }
 }
