@@ -5,13 +5,13 @@
 def call(String image, Closure body) {
   
   // Define the image
-  def image = docker.image(image)
+  def dimage = docker.image(image)
   
   // Pull the image
-  image.pull()
+  dimage.pull()
   
   // Use the image with the Closure body
-  image.inside {
+  dimage.inside {
     body()
   }
   
