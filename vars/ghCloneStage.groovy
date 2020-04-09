@@ -10,7 +10,7 @@ def call() {
 			
 			echo "SHA = ${gitCommit()}"
 			
-			stash name: 'scm', includes: '*'
+			stash name: 'scm', includes: '**'
         }
     }
 }
