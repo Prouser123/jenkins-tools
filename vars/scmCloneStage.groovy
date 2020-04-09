@@ -18,7 +18,7 @@ def call() {
 			
 			echo "[scmCloneStage] set env.GIT_BRANCH: ${env.GIT_BRANCH}"
 			echo "[scmCloneStage] set env.GIT_URL: ${env.GIT_URL}"
-			echo "[scmCloneStage] set env.GIT_COMMIT: ${env.GIT_COMMIT}
+			echo "[scmCloneStage] set env.GIT_COMMIT: ${env.GIT_COMMIT}"
 			
 			// echo "SHA = ${gitCommit()}"
 			
