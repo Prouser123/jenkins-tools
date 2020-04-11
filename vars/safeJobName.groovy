@@ -1,5 +1,5 @@
 // vars/safeJobName.groovy
 
 def call() {
-  return JOB_NAME.replaceAll( "/",".")
+  return JOB_NAME.replaceAll( "/",".").toLowerCase()
 }
