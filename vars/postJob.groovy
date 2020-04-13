@@ -35,17 +35,17 @@ def call(Closure body, Closure onSuccess=postJobDefaultFunction, Closure onFailu
       
     if (currentBuild.result == 'ABORTED') {
       echo '[postJob] Running script: ABORTED'
-	  onAborted()
+	  onAborted.call()
     }
         
     if (currentBuild.result == 'SUCCESS') {
       echo '[postJob] Running script: SUCCESS'
-	  onSuccess()
+	  onSuccess.call()
     }
         
     if (currentBuild.result == 'FAILURE') {
       echo '[postJob] Running script: FAILURE'
-	  onFailure()
+	  onFailure.call()
     }
   }
 }
