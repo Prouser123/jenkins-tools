@@ -1,5 +1,7 @@
 // vars/ghSetStatus.groovy
 
+// Can be one of error, failure, pending, or success.
+
 def call(String message, String state, String context="ci") {
 
 	String origin
