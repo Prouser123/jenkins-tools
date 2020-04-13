@@ -11,9 +11,7 @@ import java.lang.Exception
 
 // Not Built // Unstable is not supported.
 
-Closure default = this.&postJobDefaultFunction
-
-def call(Closure body, Closure onSuccess=default, Closure onFailure=default, Closure onAborted=default) {
+def call(Closure body, Closure onSuccess=postJobDefaultFunction, Closure onFailure=postJobDefaultFunction, Closure onAborted=postJobDefaultFunction) {
   try {
     body()
   }
