@@ -13,5 +13,5 @@ def onAborted() {
 }
 
 def call(Closure body) {
-  postJob(body, onSuccess, onFailure, onAborted)
+  postJob(body, this.&onSuccess, this.&onFailure, this.&onAborted)
 }
