@@ -34,7 +34,7 @@ def call(Closure body, Closure onSuccess=postJobDefaultFunction, Closure onFailu
 	echo "[postJob] finally block triggered, currentBuild.result: ${currentBuild.result}"
       
     if (currentBuild.result == 'ABORTED') {
-      echo '[postJob] Running script: 'ABORTED'
+      echo '[postJob] Running script: ABORTED'
 	  onAborted()
     }
         
