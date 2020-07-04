@@ -16,7 +16,10 @@ def call(String message, String state, String context="ci") {
 		echo "[ghSetStatus] GIT_URL not available, using git CLI instead..."
 		
 		// The env variable is not available, falling back to CLI.
-		origin = sh(returnStdout: true, script: "set +x && git config --get remote.origin.url").replaceAll('\r', '').replaceAll('\n', '')
+		origin = sh(returnStdout: true, script: """
+		set +x
+		git config --get remote.origin.url"""
+		).replaceAll('\r', '').replaceAll('\n', '')
 	}
 	String[] originArr = origin.split("/")
 	String repo = (originArr[-2] + "/" + originArr[-1]).replace(".git", "")
