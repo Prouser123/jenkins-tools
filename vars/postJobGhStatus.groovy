@@ -13,6 +13,5 @@ def onAborted() {
 }
 
 def call(Closure body) {
-  ghSetStatus("The job is in progress.", "pending", "ci")
   postJob(body, this.&onSuccess, this.&onFailure, this.&onAborted)
 }
