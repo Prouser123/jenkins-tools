@@ -16,13 +16,14 @@ def call(String message, String state, String context="ci") {
 		echo "[ghSetStatus] GIT_URL not available, using git CLI instead..."
 		
 		// The env variable is not available, falling back to CLI.
-		origin = sh(returnStdout: true, script: "git config --get remote.origin.url").replaceAll('\r', '').replaceAll('\n', '')
+		origin = sh(returnStdout: true, script: "set +x && git config --get remote.origin.url").replaceAll('\r', '').replaceAll('\n', '')
 	}
 	String[] originArr = origin.split("/")
 	String repo = (originArr[-2] + "/" + originArr[-1]).replace(".git", "")
 	
 	withCredentials([string(credentialsId: 'github-ci', variable: 'TOKEN')]) {
 		sh """
+	    set +x
             curl --silent --output /dev/null --show-error --fail \"https://api.github.com/repos/$repo/statuses/${gitCommit()}\" \
 				-H \"Authorization: token ${TOKEN}\" \
                 -H \"Content-Type: application/json\" \
